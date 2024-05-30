@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="dev.luizleal.tabuadaglecio.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/from_right"
+            app:popExitAnim="@anim/from_left" />
+        <action
+            android:id="@+id/action_homeFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment"
+            app:enterAnim="@anim/from_right"
+            app:popExitAnim="@anim/from_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="dev.luizleal.tabuadaglecio.fragments.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="dev.luizleal.tabuadaglecio.fragments.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_restartFragment"
+            app:destination="@id/restartFragment"
+            app:enterAnim="@anim/from_right"
+            app:popExitAnim="@anim/from_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/restartFragment"
+        android:name="dev.luizleal.tabuadaglecio.fragments.RestartFragment"
+        android:label="fragment_restart"
+        tools:layout="@layout/fragment_restart">
+        <action
+            android:id="@+id/action_restartFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+        <argument
+            android:name="correct_answers"
+            app:argType="string" />
+        <argument
+            android:name="wrong_answers"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="dev.luizleal.tabuadaglecio.fragments.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
+</navigation>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.HomeFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="38dp"
+            android:fontFamily="@font/fredoka_one"
+            android:paddingHorizontal="8dp"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/primary"
+            android:textSize="38sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_one"
+            android:padding="8dp"
+            android:text="@string/teste_seus_conhecimentos_e_treine_para_n_o_passar_vergonha"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@id/text_header"
+            app:layout_constraintEnd_toEndOf="@id/text_header"
+            app:layout_constraintTop_toBottomOf="@id/text_header" />
+
+        <TextView
+            android:id="@+id/button_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/primary_chip_view_selector"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/fredoka_one"
+            android:maxLines="1"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="20dp"
+            android:paddingTop="20dp"
+            android:text="@string/começar"
+            android:clickable="true"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:drawableLeftCompat="@drawable/ic_play"
+            app:drawableTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_message"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/button_view_leaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/secondary_chip_view_selector"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/fredoka_one"
+            android:maxLines="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="4dp"
+            android:paddingHorizontal="32dp"
+            android:paddingVertical="20dp"
+            android:text="@string/ver_placar"
+            android:textColor="@color/primary"
+            android:textSize="22sp"
+            app:drawableLeftCompat="@drawable/ic_trophy"
+            app:drawableTint="@color/primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_start" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sua_maior_pontua_o_0"
+            android:textSize="22sp"
+            android:fontFamily="@font/fredoka_one"
+            app:layout_constraintTop_toBottomOf="@id/button_view_leaderboard"
+            app:layout_constraintStart_toStartOf="@id/button_view_leaderboard"
+            app:layout_constraintEnd_toEndOf="@id/button_view_leaderboard"
+            android:textColor="@color/gray"
+            android:layout_marginTop="16dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_one"
+            android:text="v1.0.0"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

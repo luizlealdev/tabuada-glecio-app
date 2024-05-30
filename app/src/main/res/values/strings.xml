@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Tabuada de Glécio</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="jogo_da_tabuda_de_glecio">Jogo da tabuda de Glécio</string>
+    <string name="teste_seus_conhecimentos_e_treine_para_n_o_passar_vergonha">Teste seus conhecimentos e treine para não passar vergonha.</string>
+    <string name="começar">Começar</string>
+    <string name="ver_placar">Ver placar</string>
+    <string name="informacoes_de_usuario">Informações de usuário</string>
+    <string name="nome">Nome:</string>
+    <string name="digite_seu_nome">Digite seu nome</string>
+    <string name="turma">Turma:</string>
+    <string name="digite_qual_a_sua_turma">Digite qual é a sua turma</string>
+    <string name="avatar">Avatar:</string>
+    <string name="salvar">Salvar</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_0">0</string>
+    <string name="o_tempo_acabou">O Tempo Acabou!</string>
+    <string name="seu_resultado">Seu resultado:</string>
+    <string name="acertos">Acertos</string>
+    <string name="erros">Erros</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="sua_maior_pontua_o_0">Sua maior pontuação: 0</string>
+    <string name="placar_de_pontos">Placar de pontos</string>
+    <string name="veja_quem_se_sai_melhor_na_competico">Veja quem se sai melhor na competição</string>
+    <string name="posicao">Posição</string>
+    <string name="_nome">Nome</string>
+    <string name="_turma">Turma</string>
+    <string name="pontos">Pontos</string>
+    <string name="_avatar">Avatar</string>
+    <string name="deletar">Deletar</string>
+    <string name="enter">Enter</string>
+</resources>

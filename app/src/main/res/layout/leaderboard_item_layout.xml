@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/text_position_index"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/_1"
+            android:fontFamily="@font/fredoka_one"
+            android:textSize="22sp"
+            android:textColor="@color/gray"/>
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_position_index"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:src="@drawable/default_avatar"
+            android:layout_marginStart="12dp"
+            android:id="@+id/image_user_avatar"
+            android:contentDescription="@string/_avatar" />
+
+        <TextView
+            android:id="@+id/text_username"
+            android:textColor="@color/darkGray"
+            android:text="Glécio Raimundo"
+            android:textSize="22sp"
+            android:fontFamily="@font/fredoka_one"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/image_user_avatar"
+            android:layout_marginStart="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/text_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/fredoka_one"
+            android:text="Administração"
+            android:textColor="@color/gray"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/text_username"
+            app:layout_constraintTop_toBottomOf="@id/text_username" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary"
+            android:textSize="24sp"
+            android:text="42"
+            android:fontFamily="@font/fredoka_one"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:drawableTint="@color/primary"
+            app:drawableLeftCompat="@drawable/ic_star" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
