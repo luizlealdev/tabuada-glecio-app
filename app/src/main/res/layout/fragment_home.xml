@@ -7,6 +7,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:padding="16dp"
+        android:background="@color/backgroundColor"
         android:layout_height="match_parent">
 
         <TextView
@@ -33,7 +34,7 @@
             android:padding="8dp"
             android:text="@string/teste_seus_conhecimentos_e_treine_para_n_o_passar_vergonha"
             android:textAlignment="center"
-            android:textColor="@color/gray"
+            android:textColor="@color/textColorSecondary"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="@id/text_header"
             app:layout_constraintEnd_toEndOf="@id/text_header"
@@ -93,14 +94,14 @@
             app:layout_constraintTop_toBottomOf="@id/button_view_leaderboard"
             app:layout_constraintStart_toStartOf="@id/button_view_leaderboard"
             app:layout_constraintEnd_toEndOf="@id/button_view_leaderboard"
-            android:textColor="@color/gray"
+            android:textColor="@color/textColorSecondary"
             android:layout_marginTop="16dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/fredoka_one"
             android:text="v1.0.0"
-            android:textColor="@color/gray"
+            android:textColor="@color/textColorSecondary"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />

@@ -10,9 +10,12 @@
     <color name="lightPrimary">#b49cf4</color>
     <color name="whitePrimary">#f0e4fc</color>
     <color name="gray">#afafaf</color>
-    <color name="lightGray">#d4d4d4</color>
-    <color name="darkGray">#6c6c6c</color>
 
+    <color name="backgroundColor">#ffffff</color>
+    <color name="backgroundColorSecondary">#d4d4d4</color>
+    <color name="textColorPrimary">#6c6c6c</color>
+    <color name="textColorSecondary">#afafaf</color>
+    <color name="textColorLight">#d4d4d4</color>
 
-    <color name="backgroundColor">@color/white</color>
+    <color name="secondaryButtonFaceColor">#FFFEFE</color>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#afafaf</color>
+    <color name="whitePrimary">#220D36</color>
+
+    <color name="backgroundColor">#12091C</color>
+    <color name="backgroundColorSecondary">#220D36</color>
+    <color name="textColorPrimary">#C9AFE4</color>
+    <color name="textColorSecondary">#AE92CC</color>
+    <color name="textColorLight">#f5f5f5</color>
+
+    <color name="secondaryButtonFaceColor">#E6160822</color>
+</resources>
