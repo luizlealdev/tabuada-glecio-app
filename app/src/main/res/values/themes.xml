@@ -14,4 +14,12 @@
     </style>
 
     <style name="Theme.TabuadaDeGlécio" parent="Base.Theme.TabuadaDeGlécio" />
+
+    <style name="AlertDialogStyle" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:background">@color/backgroundColor</item>
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:fontFamily">@font/fredoka_one</item>
+    </style>
 </resources>
