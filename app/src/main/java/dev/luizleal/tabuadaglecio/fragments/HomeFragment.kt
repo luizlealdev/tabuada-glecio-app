@@ -36,5 +36,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.buttonStart.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
         }
+        binding.buttonViewLeaderboard.setOnClickListener {
+            it.findNavController().navigate(R.id.action_homeFragment_to_leaderboardFragment)
+        }
     }
 }
