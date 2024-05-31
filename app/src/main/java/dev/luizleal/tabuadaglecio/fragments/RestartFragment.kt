@@ -42,6 +42,11 @@ class RestartFragment : Fragment(R.layout.fragment_restart) {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        restartBinding = null
+    }
+
     private fun setScore() {
         binding.textCountRight.setText(args.correctAnswers)
         binding.textCountWrong.setText(args.wrongAnswers)

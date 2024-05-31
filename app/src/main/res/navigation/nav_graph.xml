@@ -22,15 +22,6 @@
             app:popExitAnim="@anim/from_left" />
     </fragment>
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="dev.luizleal.tabuadaglecio.fragments.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register">
-        <action
-            android:id="@+id/action_registerFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/gameFragment"
         android:name="dev.luizleal.tabuadaglecio.fragments.GameFragment"
         android:label="fragment_game"
