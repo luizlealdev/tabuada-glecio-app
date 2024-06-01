@@ -11,6 +11,7 @@ import dev.luizleal.tabuadaglecio.databinding.FragmentLeaderboardBinding
 class LeaderboardFragment : Fragment() {
     private var leaderboardBinding: FragmentLeaderboardBinding? = null
     private val binding get() = leaderboardBinding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
