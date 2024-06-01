@@ -3,6 +3,7 @@ package dev.luizleal.tabuadaglecio.fragments
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,14 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import dev.luizleal.tabuadaglecio.R
+import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentGameBinding
+import dev.luizleal.tabuadaglecio.model.LeaderboardUser
 import dev.luizleal.tabuadaglecio.model.Multiplication
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimationToAll
-import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setScaleAnimation
 import kotlin.random.Random
 
 class GameFragment : Fragment(R.layout.fragment_game) {
@@ -25,6 +29,12 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private lateinit var currentMultiplication: Multiplication
     private var correctCount = 0
     private var wrongCount = 0
+
+    private var firebaseDatabase: FirebaseDatabase? = null
+    private var databaseReference: DatabaseReference? = null
+    private var leaderboardUserList = mutableListOf<LeaderboardUser>()
+
+    private lateinit var securityPreferences: SecurityPreferences
 
     //private val handler = Handler(Looper.getMainLooper())
 
@@ -53,6 +63,11 @@ class GameFragment : Fragment(R.layout.fragment_game) {
             binding.textNumpad8,
             binding.textNumpad9
         )
+
+        securityPreferences = SecurityPreferences(requireContext())
+
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        databaseReference = firebaseDatabase?.getReference("leaderboard")
 
         setButtonPressedAnimationToAll(numpadButtons)
         setNumpadButtonsAction(numpadButtons)
@@ -119,6 +134,11 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                     correctCount.toString(),
                     wrongCount.toString()
                 )
+
+                saveLeaderboardItem()
+
+                correctCount = 0
+                wrongCount = 0
                 findNavController().navigate(action)
             }
         }
@@ -154,5 +174,16 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         val result = firstNumber * secondNumber
 
         currentMultiplication = Multiplication(firstNumber, secondNumber, result)
+    }
+
+    private fun saveLeaderboardItem() {
+        databaseReference?.child(securityPreferences.getString("userId"))?.setValue(
+            LeaderboardUser(
+                username = securityPreferences.getString("username"),
+                userClass = securityPreferences.getString("userClass"),
+                avatarId = "avatar-1",
+                score = correctCount
+            )
+        )
     }
 }
