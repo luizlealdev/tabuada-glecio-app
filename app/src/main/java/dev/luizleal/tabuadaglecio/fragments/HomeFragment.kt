@@ -1,19 +1,15 @@
 package dev.luizleal.tabuadaglecio.fragments
 
-import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import dev.luizleal.tabuadaglecio.R
 import dev.luizleal.tabuadaglecio.databinding.FragmentHomeBinding
-import dev.luizleal.tabuadaglecio.util.ViewUtils
+import dev.luizleal.tabuadaglecio.ui.LeaderboardActivity
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -37,7 +33,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             it.findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
         }
         binding.buttonViewLeaderboard.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_leaderboardFragment)
+            val intent = Intent(requireContext(), LeaderboardActivity::class.java)
+            startActivity(intent)
         }
     }
 }

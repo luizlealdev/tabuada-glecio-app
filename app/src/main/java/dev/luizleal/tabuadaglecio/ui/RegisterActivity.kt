@@ -64,11 +64,6 @@ class RegisterActivity : AppCompatActivity() {
                 //Log.d("RegisterActivity", "Navigating to MainActivity")
 
                 goToMainActivity()
-                Toast.makeText(
-                    this@RegisterActivity,
-                    "Informações salvas com sucesso!",
-                    Toast.LENGTH_SHORT
-                ).show()
             } else {
                 MaterialAlertDialogBuilder(
                     this@RegisterActivity,
