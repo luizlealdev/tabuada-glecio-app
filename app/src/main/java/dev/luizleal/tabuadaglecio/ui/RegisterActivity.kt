@@ -14,6 +14,7 @@ import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.ActivityRegisterBinding
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
 import kotlin.random.Random
+import dev.luizleal.tabuadaglecio.util.StringUtils
 
 class RegisterActivity : AppCompatActivity() {
     private var registerBinding: ActivityRegisterBinding? = null
@@ -58,7 +59,7 @@ class RegisterActivity : AppCompatActivity() {
             if (username.isNotEmpty() && userClass.isNotEmpty()) {
                 securityPreferences.storeString("username", username.toString())
                 securityPreferences.storeString("userClass", userClass.toString())
-                securityPreferences.storeString("userId", generateUserId())
+                securityPreferences.storeString("userId", StringUtils.generateUserId())
 
                 //Log.d("RegisterActivity", "Navigating to MainActivity")
 
@@ -76,17 +77,6 @@ class RegisterActivity : AppCompatActivity() {
                     .setPositiveButton("Ok", null).show()
             }
         }
-    }
-
-    private fun generateUserId(): String {
-        val characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwyz1234567890"
-        var id = ""
-
-        for (i in 1..12) {
-            id += characters[Random.nextInt(0, 61)]
-        }
-
-        return id
     }
 
     private fun goToMainActivity() {
