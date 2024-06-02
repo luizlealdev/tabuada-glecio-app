@@ -16,6 +16,9 @@ import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnima
 
 class RestartFragment : Fragment(R.layout.fragment_restart) {
     private var restartBinding: FragmentRestartBinding? = null
+
+    private lateinit var securityPreferences: SecurityPreferences
+    
     private val binding get() = restartBinding!!
     private val args: RestartFragmentArgs by navArgs()
 

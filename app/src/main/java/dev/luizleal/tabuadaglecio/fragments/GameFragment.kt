@@ -3,6 +3,7 @@ package dev.luizleal.tabuadaglecio.fragments
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -138,6 +139,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
                 correctCount = 0
                 wrongCount = 0
+                resultInput.setText(null)
                 findNavController().navigate(action)
             }
         }
@@ -191,7 +193,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 .isNotEmpty()
         ) securityPreferences.getString("maxScore").toInt() else 0
 
-        if (correctCount > maxScore) {
+        if (correctCount >= maxScore) {
             securityPreferences.storeString("maxScore", correctCount.toString())
         }
     }

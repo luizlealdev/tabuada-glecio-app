@@ -70,7 +70,7 @@ class AvatarSelectorAdapter(private val context: Context, var progressBar: Progr
                     override fun onError(e: Exception?) {
                         Toast.makeText(
                             itemView.context,
-                            "Falha ao carregar os avatares, verifique sua conexão com a internet",
+                            "Falha ao carregar os avatares, verifique sua conexão com a internet.",
                             Toast.LENGTH_SHORT
                         ).show()
                     }

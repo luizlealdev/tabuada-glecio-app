@@ -48,6 +48,8 @@ class RegisterActivity : AppCompatActivity() {
             avatarList += AvatarItem("avatar-$i")
         }
         adapter?.setItems(avatarList)
+
+        securityPreferences.storeString("avatarId", "avatar-1")
     }
 
     private fun initRecyclerView() {
