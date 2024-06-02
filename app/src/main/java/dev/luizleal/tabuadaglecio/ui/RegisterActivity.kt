@@ -2,25 +2,27 @@ package dev.luizleal.tabuadaglecio.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.luizleal.tabuadaglecio.R
+import dev.luizleal.tabuadaglecio.adapter.AvatarSelectorAdapter
 import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.ActivityRegisterBinding
-import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
-import kotlin.random.Random
+import dev.luizleal.tabuadaglecio.model.AvatarItem
 import dev.luizleal.tabuadaglecio.util.StringUtils
+import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
 
 class RegisterActivity : AppCompatActivity() {
     private var registerBinding: ActivityRegisterBinding? = null
     private val binding get() = registerBinding!!
 
     private lateinit var securityPreferences: SecurityPreferences
+
+    private var adapter: AvatarSelectorAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,6 +40,23 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.buttonSave.setOnClickListener(saveUserInfo())
         binding.buttonSave.setButtonPressedAnimation();
+
+        initRecyclerView()
+
+        val avatarList: MutableList<AvatarItem> = mutableListOf()
+        for (i in 1..32) {
+            avatarList += AvatarItem("avatar-$i")
+        }
+        adapter?.setItems(avatarList)
+    }
+
+    private fun initRecyclerView() {
+        adapter = AvatarSelectorAdapter(applicationContext, binding.avatarLoadingSpinner)
+        binding.apply {
+            recyclerAvatarSelector.layoutManager =
+                LinearLayoutManager(applicationContext, LinearLayoutManager.HORIZONTAL, false)
+            recyclerAvatarSelector.adapter = adapter
+        }
     }
 
     override fun onDestroy() {

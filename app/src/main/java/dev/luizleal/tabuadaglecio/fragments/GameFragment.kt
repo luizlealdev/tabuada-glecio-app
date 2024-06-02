@@ -180,7 +180,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
             LeaderboardUser(
                 username = securityPreferences.getString("username"),
                 userClass = securityPreferences.getString("userClass"),
-                avatarId = "avatar-1",
+                avatarId = securityPreferences.getString("avatarId"),
                 score = correctCount
             )
         )
