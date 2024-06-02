@@ -8,7 +8,7 @@ class StringUtils private constructor(){
             val characters = ('A'..'Z') + ('a'..'z') + ('0'..'9')
             var id = ""
 
-            for (i in 1..12) {
+            for (i in 1..14) {
                 id += characters[Random.nextInt(0, 61)]
             }
 
