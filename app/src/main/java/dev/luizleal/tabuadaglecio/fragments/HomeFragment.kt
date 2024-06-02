@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import dev.luizleal.tabuadaglecio.R
+import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentHomeBinding
 import dev.luizleal.tabuadaglecio.ui.LeaderboardActivity
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
@@ -23,18 +24,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonStart.setButtonPressedAnimation()
         binding.buttonViewLeaderboard.setButtonPressedAnimation()
 
-        binding.buttonStart.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
-        }
-        binding.buttonViewLeaderboard.setOnClickListener {
-            val intent = Intent(requireContext(), LeaderboardActivity::class.java)
-            startActivity(intent)
+        binding.apply {
+            buttonStart.setOnClickListener {
+                it.findNavController().navigate(R.id.action_homeFragment_to_gameFragment)
+            }
+            buttonViewLeaderboard.setOnClickListener {
+                val intent = Intent(requireContext(), LeaderboardActivity::class.java)
+                startActivity(intent)
+            }
+            textMaxScore.text =
+                "Sua maior pontuação: ${SecurityPreferences(requireContext()).getString("maxScore")}"
         }
     }
 }

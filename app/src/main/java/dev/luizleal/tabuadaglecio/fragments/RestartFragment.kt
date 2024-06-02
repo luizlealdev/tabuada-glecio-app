@@ -1,15 +1,17 @@
 package dev.luizleal.tabuadaglecio.fragments
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavArgs
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import dev.luizleal.tabuadaglecio.R
+import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentRestartBinding
+import dev.luizleal.tabuadaglecio.ui.LeaderboardActivity
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
 
 class RestartFragment : Fragment(R.layout.fragment_restart) {
@@ -29,16 +31,22 @@ class RestartFragment : Fragment(R.layout.fragment_restart) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val startButton = binding.buttonStart
-        val viewLeaderboardButton = binding.buttonStart
-
-        startButton.setButtonPressedAnimation()
-        viewLeaderboardButton.setButtonPressedAnimation()
-
         setScore()
 
-        startButton.setOnClickListener {
-            it.findNavController().popBackStack(R.id.gameFragment, false)
+        binding.apply {
+            buttonRestart.setButtonPressedAnimation()
+            buttonViewLeaderboard.setButtonPressedAnimation()
+
+            buttonRestart.setOnClickListener {
+                it.findNavController().popBackStack(R.id.gameFragment, false)
+            }
+            buttonViewLeaderboard.setOnClickListener {
+                val intent = Intent(requireContext(), LeaderboardActivity::class.java)
+                startActivity(intent)
+            }
+
+            textMaxScore.text =
+                "Sua maior pontuacão: ${SecurityPreferences(requireContext()).getString("maxScore")}"
         }
     }
 

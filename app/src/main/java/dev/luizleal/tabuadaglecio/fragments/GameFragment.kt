@@ -3,7 +3,6 @@ package dev.luizleal.tabuadaglecio.fragments
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +31,6 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     private var firebaseDatabase: FirebaseDatabase? = null
     private var databaseReference: DatabaseReference? = null
-    private var leaderboardUserList = mutableListOf<LeaderboardUser>()
 
     private lateinit var securityPreferences: SecurityPreferences
 
@@ -136,6 +134,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 )
 
                 saveLeaderboardItem()
+                checkMaxScore()
 
                 correctCount = 0
                 wrongCount = 0
@@ -185,5 +184,15 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 score = correctCount
             )
         )
+    }
+
+    private fun checkMaxScore() {
+        val maxScore = if (securityPreferences.getString("maxScore")
+                .isNotEmpty()
+        ) securityPreferences.getString("maxScore").toInt() else 0
+
+        if (correctCount > maxScore) {
+            securityPreferences.storeString("maxScore", correctCount.toString())
+        }
     }
 }

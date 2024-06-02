@@ -92,7 +92,7 @@
             app:layout_constraintTop_toBottomOf="@id/text_count_wrong" />
 
         <TextView
-            android:id="@+id/button_start"
+            android:id="@+id/button_restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_chip_view_selector"
@@ -130,14 +130,15 @@
             app:drawableTint="@color/primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_start" />
+            app:layout_constraintTop_toBottomOf="@id/button_restart" />
 
         <TextView
+            android:id="@+id/text_max_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/fredoka_one"
-            android:text="Sua maior pontuação: 0"
+            android:text="@string/sua_maior_pontua_o_0"
             android:textColor="@color/textColorSecondary"
             android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="@id/button_view_leaderboard"
