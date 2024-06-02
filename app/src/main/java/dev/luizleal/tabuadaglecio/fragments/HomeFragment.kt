@@ -16,6 +16,8 @@ import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnima
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
 
+    private lateinit var securityPreferences: SecurityPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,8 +30,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        securityPreferences = SecurityPreferences(requireContext())
+
         binding.buttonStart.setButtonPressedAnimation()
         binding.buttonViewLeaderboard.setButtonPressedAnimation()
+
+        if (securityPreferences.getString("maxScore").isEmpty()) {
+            securityPreferences.storeString("maxScore", "0")
+        }
 
         binding.apply {
             buttonStart.setOnClickListener {
