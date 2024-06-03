@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DatabaseReference
@@ -97,13 +98,26 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     private fun submitAnswer() {
         val userAnswer = resultInput.text.toString()
-        val result = currentMultiplication.result
 
-        if (userAnswer.isNotEmpty() && userAnswer.toInt() == result) {
-            correctCount++
-        } else wrongCount++
+        if (userAnswer.isNotEmpty()) {
+            try {
+                val userAnswerInt = userAnswer.toInt()
+                val result = currentMultiplication.result
 
-        updateInterface()
+                if (userAnswerInt == result) {
+                    correctCount++
+                } else {
+                    wrongCount++
+                }
+
+                updateInterface()
+            } catch (e: NumberFormatException) {
+                Toast.makeText(context, "Por favor, insira um número válido", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        } else {
+            Toast.makeText(context, "Por favor, insira um número", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setNumpadButtonsAction(buttons: List<TextView>) {
@@ -140,7 +154,12 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                 correctCount = 0
                 wrongCount = 0
                 resultInput.setText(null)
-                findNavController().navigate(action)
+
+                if (isAdded && !isRemoving) {
+                    findNavController().navigate(action)
+                } else {
+                    Log.e("GameFragment", "Fragment not attached to the context or being removed")
+                }
             }
         }
 
@@ -153,7 +172,8 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
         generateNewMultiplication()
         setMultiplication()
-        resultInput.text = null
+
+        resultInput.setText(null)
     }
 
     private fun setMultiplication() {
@@ -162,7 +182,6 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         textMultiplication.setText(
             "${currentMultiplication.firstNumber} x ${currentMultiplication.secondNumber}"
         )
-
         // if (true) {
         //textMultiplication.setScaleAnimation()
         //}
