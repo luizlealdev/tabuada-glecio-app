@@ -78,8 +78,8 @@ class RegisterActivity : AppCompatActivity() {
             val userClass = binding.editClass.text
 
             if (username.isNotEmpty() && userClass.isNotEmpty()) {
-                securityPreferences.storeString("username", username.toString())
-                securityPreferences.storeString("userClass", userClass.toString())
+                securityPreferences.storeString("username", username.toString().trim())
+                securityPreferences.storeString("userClass", userClass.toString().trim())
                 securityPreferences.storeString("userId", StringUtils.generateUserId())
 
                 //Log.d("RegisterActivity", "Navigating to MainActivity")
