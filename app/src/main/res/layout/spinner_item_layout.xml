@@ -1,0 +1,10 @@
+<!-- spinner_dropdown_item_layout.xml -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    style="?android:attr/dropDownItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:fontFamily="@font/fredoka_one"
+    android:singleLine="true"
+    android:background="@color/backgroundColor"
+    android:textColor="@color/textColorPrimary" />

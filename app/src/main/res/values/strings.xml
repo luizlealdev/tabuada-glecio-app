@@ -47,4 +47,9 @@
     <string name="animacoes">Animações</string>
     <string name="editar_perfil">Editar perfil</string>
     <string name="tema">Tema</string>
+    <string-array name="theme_mode">
+        <item>Sistema</item>
+        <item>Claro</item>
+        <item>Escuro</item>
+    </string-array>
 </resources>
