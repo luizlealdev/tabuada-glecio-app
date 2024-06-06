@@ -39,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
         checkIfUserAlreadyRegisted()
 
         binding.buttonSave.setOnClickListener(saveUserInfo())
-        binding.buttonSave.setButtonPressedAnimation();
+        binding.buttonSave.setButtonPressedAnimation()
 
         initRecyclerView()
 
@@ -67,8 +67,15 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun checkIfUserAlreadyRegisted() {
+        val intent = intent
+        val isEditingProfile = intent.getBooleanExtra("isEditing", false)
+
         if (securityPreferences.getString("username").isNotEmpty()) {
-            goToMainActivity()
+            if (!isEditingProfile) {
+                goToMainActivity()
+            } else {
+                setUserInfo()
+            }
         }
     }
 
@@ -92,6 +99,13 @@ class RegisterActivity : AppCompatActivity() {
                 ).setTitle("Algo deu errado!").setMessage("Por favor, preencha todos os campos")
                     .setPositiveButton("Ok", null).show()
             }
+        }
+    }
+
+    private fun setUserInfo() {
+        binding.apply {
+            editName.setText(securityPreferences.getString("username"))
+            editClass.setText(securityPreferences.getString("userClass"))
         }
     }
 

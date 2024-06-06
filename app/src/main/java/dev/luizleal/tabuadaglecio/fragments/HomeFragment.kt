@@ -11,6 +11,7 @@ import dev.luizleal.tabuadaglecio.R
 import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentHomeBinding
 import dev.luizleal.tabuadaglecio.ui.LeaderboardActivity
+import dev.luizleal.tabuadaglecio.ui.SettingsActivity
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -49,6 +50,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
             textMaxScore.text =
                 "Sua maior pontuação: ${SecurityPreferences(requireContext()).getString("maxScore")}"
+
+            imageSettingsButton.setOnClickListener {
+                val intent = Intent(requireContext(), SettingsActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }
