@@ -81,6 +81,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun saveUserInfo(): View.OnClickListener {
         return View.OnClickListener { view ->
+            val intent = intent
+            val isEditingProfile = intent.getBooleanExtra("isEditing", false)
+
             val username = binding.editName.text
             val userClass = binding.editClass.text
 
@@ -91,7 +94,12 @@ class RegisterActivity : AppCompatActivity() {
 
                 //Log.d("RegisterActivity", "Navigating to MainActivity")
 
-                goToMainActivity()
+                if (!isEditingProfile) {
+                    goToMainActivity()
+                } else {
+                    finish()
+                }
+
             } else {
                 MaterialAlertDialogBuilder(
                     this@RegisterActivity,
