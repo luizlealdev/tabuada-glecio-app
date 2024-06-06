@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.TabuadaDeGlécio" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -23,5 +23,15 @@
         <item name="android:textColor">@color/textColorSecondary</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:fontFamily">@font/fredoka_one</item>
+    </style>
+
+    <style name="Switch.Default" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="thumbIcon">@drawable/ic_check</item>
+        <item name="checkedIconSize">16dp</item>
+        <item name="selectorSize">16dp</item>
+        <item name="iconSize">16dp</item>
+        <item name="drawableSize">16dp</item>
+        <item name="itemIconSize">16dp</item>
+        <item name="maxImageSize">16dp</item>
     </style>
 </resources>

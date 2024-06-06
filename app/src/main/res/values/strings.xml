@@ -44,4 +44,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="configuracoes">Configurações</string>
+    <string name="animacoes">Animações</string>
+    <string name="editar_perfil">Editar perfil</string>
+    <string name="tema">Tema</string>
 </resources>
