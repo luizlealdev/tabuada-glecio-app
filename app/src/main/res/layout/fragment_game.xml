@@ -71,7 +71,7 @@
             android:layout_marginHorizontal="4dp"
             android:background="@drawable/input_style"
             android:enabled="false"
-            android:maxLength="4"
+            android:maxLength="2"
             android:fontFamily="@font/fredoka_one"
             android:importantForAutofill="no"
             android:inputType="number"
