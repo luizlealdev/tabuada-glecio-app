@@ -48,13 +48,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 val intent = Intent(requireContext(), LeaderboardActivity::class.java)
                 startActivity(intent)
             }
-            textMaxScore.text =
-                "Sua maior pontuação: ${SecurityPreferences(requireContext()).getString("maxScore")}"
 
             imageSettingsButton.setOnClickListener {
                 val intent = Intent(requireContext(), SettingsActivity::class.java)
                 startActivity(intent)
             }
         }
+
+        setInfoToInterface()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setInfoToInterface()
+    }
+
+    private fun setInfoToInterface() {
+        binding.textMaxScore.text =
+            "Sua maior pontuação: ${SecurityPreferences(requireContext()).getString("maxScore")}"
     }
 }
