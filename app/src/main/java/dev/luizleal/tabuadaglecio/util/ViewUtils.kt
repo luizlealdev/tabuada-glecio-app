@@ -6,8 +6,7 @@ import android.animation.PropertyValuesHolder
 import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
-import android.view.animation.AnimationSet
-import kotlinx.coroutines.time.withTimeout
+import android.widget.RelativeLayout
 
 class ViewUtils { //Classe de utilidades relacionas a Views
     companion object {

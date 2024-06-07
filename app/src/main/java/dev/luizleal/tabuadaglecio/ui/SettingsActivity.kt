@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.CompoundButton
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.luizleal.tabuadaglecio.R
+import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.content.Theme
 import dev.luizleal.tabuadaglecio.databinding.ActivitySettingsBinding
 
@@ -18,19 +21,27 @@ class SettingsActivity : AppCompatActivity() {
 
     private var isSpinnerInitialized = false
 
+    private lateinit var prefs: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         settingsBinding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        prefs = getSharedPreferences("TabuadaGlecioConfing", MODE_PRIVATE)
+
+
         binding.apply {
             textEditProfile.setOnClickListener(goToEditProfile())
+            textDeleteProgress.setOnClickListener(deleteProgress())
+            switchAnimations.setOnCheckedChangeListener(toggleAnimations())
         }
 
         Theme(applicationContext).applyTheme()
 
         setupThemeSpinner()
+        setSwitchAnimationSelection()
     }
 
     private fun setupThemeSpinner() {
@@ -65,8 +76,7 @@ class SettingsActivity : AppCompatActivity() {
                             else -> "system"
                         }
 
-                        val prefs: SharedPreferences =
-                            getSharedPreferences("TabuadaGlecioConfing", MODE_PRIVATE)
+
                         val currentTheme = prefs.getString("theme", "system")
 
                         if (themeToApply != currentTheme) {
@@ -85,19 +95,49 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun saveTheme(theme: String) {
-        val editor: SharedPreferences.Editor = getSharedPreferences("TabuadaGlecioConfing", MODE_PRIVATE).edit()
+        val editor: SharedPreferences.Editor =
+            getSharedPreferences("TabuadaGlecioConfing", MODE_PRIVATE).edit()
         editor.putString("theme", theme)
         editor.apply()
     }
 
     private fun setSpinnerSelection(spinner: Spinner) {
-        val prefs: SharedPreferences = getSharedPreferences("TabuadaGlecioConfing", MODE_PRIVATE)
         val theme = prefs.getString("theme", "system")
 
         when (theme) {
             "light" -> spinner.setSelection(1)
             "dark" -> spinner.setSelection(2)
             else -> spinner.setSelection(0)
+        }
+    }
+
+    private fun toggleAnimations(): CompoundButton.OnCheckedChangeListener {
+        return CompoundButton.OnCheckedChangeListener { _, isChecked ->
+            val editor: SharedPreferences.Editor =
+                getSharedPreferences("TabuadaGlecioConfing", MODE_PRIVATE).edit()
+
+            editor.putString("animations", isChecked.toString())
+            editor.apply()
+        }
+    }
+
+    private fun setSwitchAnimationSelection() {
+        val animations = prefs.getString("animations", "true").toBoolean()
+        binding.switchAnimations.isChecked = animations
+    }
+
+    private fun deleteProgress(): View.OnClickListener {
+        return View.OnClickListener { view ->
+            MaterialAlertDialogBuilder(
+                this@SettingsActivity,
+                R.style.AlertDialogStyle
+            ).setTitle("Tem certaza que desaja excluir seu progresso?")
+                .setPositiveButton("" +
+                        "Excluir") { _, _ ->
+
+                    SecurityPreferences(applicationContext).storeString("maxScore", "0")
+
+                }.setNegativeButton("Cancelar", null).show()
         }
     }
 
