@@ -1,6 +1,8 @@
 package dev.luizleal.tabuadaglecio.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -19,7 +21,9 @@ import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentGameBinding
 import dev.luizleal.tabuadaglecio.model.LeaderboardUser
 import dev.luizleal.tabuadaglecio.model.Multiplication
+import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimationToAll
+import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setScaleAnimation
 import kotlin.random.Random
 
 class GameFragment : Fragment(R.layout.fragment_game) {
@@ -35,6 +39,9 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private var databaseReference: DatabaseReference? = null
 
     private lateinit var securityPreferences: SecurityPreferences
+    private lateinit var prefsConfig: SharedPreferences
+    private var animationState: Boolean = true
+
 
     //private val handler = Handler(Looper.getMainLooper())
 
@@ -64,7 +71,15 @@ class GameFragment : Fragment(R.layout.fragment_game) {
             binding.textNumpad9
         )
 
+        binding.apply {
+            textNumpadEnter.setButtonPressedAnimation()
+            textNumpadBackspace.setButtonPressedAnimation()
+        }
+
         securityPreferences = SecurityPreferences(requireContext())
+
+        prefsConfig = requireContext().getSharedPreferences("TabuadaGlecioConfing", MODE_PRIVATE)
+        animationState = prefsConfig.getString("animations", "true").toBoolean()
 
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReference = firebaseDatabase?.getReference("leaderboard")
@@ -182,10 +197,8 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         textMultiplication.setText(
             "${currentMultiplication.firstNumber} x ${currentMultiplication.secondNumber}"
         )
-        // if (true) {
-        //textMultiplication.setScaleAnimation()
-        //}
 
+        if (animationState) textMultiplication.setScaleAnimation()
     }
 
     private fun generateNewMultiplication() {
