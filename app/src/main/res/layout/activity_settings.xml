@@ -5,94 +5,132 @@
     android:id="@+id/main"
     tools:context=".ui.SettingsActivity">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/backgroundColor">
+        android:background="@color/backgroundColor"
+        android:padding="18dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/text_header"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:fontFamily="@font/fredoka_one"
+            android:text="@string/configuracoes"
+            android:textAlignment="center"
+            android:textColor="@color/primary"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/text_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/fredoka_one"
-                android:text="@string/configuracoes"
-                android:textAlignment="center"
-                android:textColor="@color/primary"
-                android:textSize="34sp"
-                android:textStyle="bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/text_edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/fredoka_one"
+            android:paddingVertical="8dp"
+            android:text="@string/editar_perfil"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            app:drawableStartCompat="@drawable/ic_person"
+            app:drawableTint="@color/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_header" />
 
-            <TextView
-                android:id="@+id/text_edit_profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:fontFamily="@font/fredoka_one"
-                android:paddingVertical="8dp"
-                android:text="@string/editar_perfil"
-                android:textColor="@color/textColorSecondary"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_header" />
+        <TextView
+            android:id="@+id/text_theme_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/fredoka_one"
+            android:paddingVertical="8dp"
+            android:text="@string/tema"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            app:drawableStartCompat="@drawable/ic_contrast"
+            app:drawableTint="@color/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_edit_profile" />
 
-            <TextView
-                android:id="@+id/text_theme_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/fredoka_one"
-                android:paddingVertical="8dp"
-                android:text="@string/tema"
-                android:textColor="@color/textColorSecondary"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_edit_profile" />
+        <Spinner
+            android:id="@+id/spinner_theme_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@id/text_theme_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_theme_label" />
 
-            <Spinner
-                android:id="@+id/spinner_theme_selector"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:spinnerMode="dropdown"
-                app:layout_constraintBottom_toBottomOf="@id/text_theme_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/text_theme_label" />
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/switch_animations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:checked="false"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/fredoka_one"
+            android:text="@string/animacoes"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:drawableTint="@color/textColorSecondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_theme_label"
+            app:thumbTint="@color/lightPrimary"
+            app:trackDecorationTint="@color/secondaryButtonFaceColor" />
 
-            <com.google.android.material.materialswitch.MaterialSwitch
-                android:id="@+id/switch_animations"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:checked="true"
-                android:fontFamily="@font/fredoka_one"
-                android:text="@string/animacoes"
-                android:textColor="@color/textColorSecondary"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_theme_label"
-                app:thumbTint="@color/whitePrimary"
-                app:trackDecorationTint="@color/backgroundColorSecondary" />
+        <TextView
+            android:id="@+id/text_delete_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:drawablePadding="4dp"
+            android:focusable="true"
+            android:fontFamily="@font/fredoka_one"
+            android:paddingVertical="8dp"
+            android:text="@string/excluir_progresso"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            app:drawableStartCompat="@drawable/ic_delete"
+            app:drawableTint="@color/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/switch_animations" />
 
-            <TextView
-                android:id="@+id/text_delete_progress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/fredoka_one"
-                android:paddingVertical="8dp"
-                android:text="Excluir progresso"
-                android:textColor="@color/textColorSecondary"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/switch_animations" />
+        <TextView
+            android:id="@+id/text_visit_site"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:drawablePadding="4dp"
+            android:focusable="true"
+            android:fontFamily="@font/fredoka_one"
+            android:paddingVertical="8dp"
+            android:text="@string/visitar_site"
+            android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            app:drawableStartCompat="@drawable/ic_public"
+            app:drawableTint="@color/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_delete_progress" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="@string/feito_com_por_luiz_leal_e_lucas_davi_n_inform_tica_2022_2024"
+            android:textColor="@color/textColorSecondary"
+            android:fontFamily="@font/fredoka_one"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="18sp"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

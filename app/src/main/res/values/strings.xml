@@ -47,6 +47,9 @@
     <string name="animacoes">Animações</string>
     <string name="editar_perfil">Editar perfil</string>
     <string name="tema">Tema</string>
+    <string name="excluir_progresso">Excluir progresso</string>
+    <string name="visitar_site">Visitar site</string>
+    <string name="feito_com_por_luiz_leal_e_lucas_davi_n_inform_tica_2022_2024">Feito com ❤️ por Luiz Leal e Lucas Davi \n (Informática 2022 - 2024)</string>
     <string-array name="theme_mode">
         <item>Sistema</item>
         <item>Claro</item>

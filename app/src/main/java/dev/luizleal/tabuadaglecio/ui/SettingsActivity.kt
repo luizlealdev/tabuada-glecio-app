@@ -2,7 +2,9 @@ package dev.luizleal.tabuadaglecio.ui
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -36,6 +38,7 @@ class SettingsActivity : AppCompatActivity() {
             textEditProfile.setOnClickListener(goToEditProfile())
             textDeleteProgress.setOnClickListener(deleteProgress())
             switchAnimations.setOnCheckedChangeListener(toggleAnimations())
+            textVisitSite.setOnClickListener(goToWebsite())
         }
 
         Theme(applicationContext).applyTheme()
@@ -146,6 +149,14 @@ class SettingsActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, RegisterActivity::class.java)
             intent.putExtra("isEditing", true)
             startActivity(intent)
+        }
+    }
+
+    private fun goToWebsite(): View.OnClickListener {
+        return View.OnClickListener {
+            val url = "https://tabuada-de-glecio.vercel.app/"
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(browserIntent)
         }
     }
 }
