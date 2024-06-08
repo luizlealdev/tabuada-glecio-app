@@ -2,18 +2,19 @@ package dev.luizleal.tabuadaglecio.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.database.FirebaseDatabase
 import dev.luizleal.tabuadaglecio.R
 import dev.luizleal.tabuadaglecio.adapter.AvatarSelectorAdapter
 import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.ActivityRegisterBinding
 import dev.luizleal.tabuadaglecio.model.AvatarItem
+import dev.luizleal.tabuadaglecio.model.LeaderboardUser
 import dev.luizleal.tabuadaglecio.util.StringUtils
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
 
@@ -92,7 +93,8 @@ class RegisterActivity : AppCompatActivity() {
                 securityPreferences.storeString("username", username.toString().trim())
                 securityPreferences.storeString("userClass", userClass.toString().trim())
 
-                val userId = if (isEditingProfile) securityPreferences.getString("userId") else StringUtils.generateUserId()
+                val userId =
+                    if (isEditingProfile) securityPreferences.getString("userId") else StringUtils.generateUserId()
                 securityPreferences.storeString("userId", userId)
 
                 //Log.d("RegisterActivity", "Navigating to MainActivity")
@@ -100,6 +102,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (!isEditingProfile) {
                     goToMainActivity()
                 } else {
+                    editUserInfoInGlobalDatabase()
                     finish()
                 }
 
@@ -118,6 +121,20 @@ class RegisterActivity : AppCompatActivity() {
             editName.setText(securityPreferences.getString("username"))
             editClass.setText(securityPreferences.getString("userClass"))
         }
+    }
+
+    private fun editUserInfoInGlobalDatabase() {
+        val firebaseDatabase = FirebaseDatabase.getInstance()
+        val databaseReference = firebaseDatabase.getReference("leaderboard_global")
+
+        databaseReference.child(securityPreferences.getString("userId")).setValue(
+            LeaderboardUser(
+                username = securityPreferences.getString("username"),
+                userClass = securityPreferences.getString("userClass"),
+                avatarId = securityPreferences.getString("avatarId"),
+                score = securityPreferences.getString("maxScore").toInt()
+            )
+        )
     }
 
     private fun goToMainActivity() {

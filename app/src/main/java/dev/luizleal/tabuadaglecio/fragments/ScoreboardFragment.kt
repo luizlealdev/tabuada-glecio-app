@@ -62,7 +62,6 @@ class ScoreboardFragment : Fragment(R.layout.fragment_scoreboard) {
                 leaderboardUserList.clear()
 
                 for (data in snapshot.children) {
-                    val id = data.key
                     val username = data.child("username").value.toString()
                     val userClass = data.child("userClass").value.toString()
                     val avatarId = data.child("avatarId").value.toString()

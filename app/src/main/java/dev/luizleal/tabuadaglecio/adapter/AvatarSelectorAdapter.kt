@@ -32,6 +32,7 @@ class AvatarSelectorAdapter(private val context: Context, var progressBar: Progr
         val avatarId = avatarIdList[position]
         Log.d("avatar pos", avatarId.toString())
         holder.setItem(avatarId, position == selectedPosition)
+
         holder.itemView.setOnClickListener {
             // Atualize a posição selecionada e notifique a mudança
             val previousPosition = selectedPosition
