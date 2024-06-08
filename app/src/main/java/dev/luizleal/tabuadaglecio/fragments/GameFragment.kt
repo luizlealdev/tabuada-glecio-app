@@ -37,6 +37,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     private var firebaseDatabase: FirebaseDatabase? = null
     private var databaseReference: DatabaseReference? = null
+    private var databaseGlobalLeaderboardReference: DatabaseReference? = null
 
     private lateinit var securityPreferences: SecurityPreferences
     private lateinit var prefsConfig: SharedPreferences
@@ -83,6 +84,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReference = firebaseDatabase?.getReference("leaderboard")
+        databaseGlobalLeaderboardReference = firebaseDatabase?.getReference("leaderboard_global")
 
         setButtonPressedAnimationToAll(numpadButtons)
         setNumpadButtonsAction(numpadButtons)
@@ -163,7 +165,16 @@ class GameFragment : Fragment(R.layout.fragment_game) {
                     wrongCount.toString()
                 )
 
-                saveLeaderboardItem()
+                databaseReference?.let {
+                    saveLeaderboardItem(
+                        it, LeaderboardUser(
+                            username = securityPreferences.getString("username"),
+                            userClass = securityPreferences.getString("userClass"),
+                            avatarId = securityPreferences.getString("avatarId"),
+                            score = correctCount
+                        )
+                    )
+                }
                 checkMaxScore()
 
                 correctCount = 0
@@ -209,15 +220,8 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         currentMultiplication = Multiplication(firstNumber, secondNumber, result)
     }
 
-    private fun saveLeaderboardItem() {
-        databaseReference?.child(securityPreferences.getString("userId"))?.setValue(
-            LeaderboardUser(
-                username = securityPreferences.getString("username"),
-                userClass = securityPreferences.getString("userClass"),
-                avatarId = securityPreferences.getString("avatarId"),
-                score = correctCount
-            )
-        )
+    private fun saveLeaderboardItem(reference: DatabaseReference, data: LeaderboardUser) {
+        reference.child(securityPreferences.getString("userId")).setValue(data)
     }
 
     private fun checkMaxScore() {
@@ -227,6 +231,16 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
         if (correctCount >= maxScore) {
             securityPreferences.storeString("maxScore", correctCount.toString())
+            databaseGlobalLeaderboardReference?.let {
+                saveLeaderboardItem(
+                    it, LeaderboardUser(
+                        username = securityPreferences.getString("username"),
+                        userClass = securityPreferences.getString("userClass"),
+                        avatarId = securityPreferences.getString("avatarId"),
+                        score = securityPreferences.getString("maxScore").toInt()
+                    )
+                )
+            }
         }
     }
 }
