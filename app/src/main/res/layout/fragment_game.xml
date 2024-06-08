@@ -6,9 +6,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/backgroundColor"
-        android:padding="16dp"
-        android:layout_height="match_parent">
+        android:padding="16dp">
 
         <ProgressBar
             android:id="@+id/progressbar_time"
@@ -54,11 +54,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
+            android:drawablePadding="2dp"
             android:fontFamily="@font/fredoka_one"
             android:text="Erros: 0"
             android:textColor="@color/lightRed"
             android:textSize="20sp"
-            android:drawablePadding="2dp"
             app:drawableLeftCompat="@drawable/ic_close"
             app:drawableTint="@color/lightRed"
             app:layout_constraintBottom_toTopOf="@id/edit_result_input"
@@ -71,10 +71,10 @@
             android:layout_marginHorizontal="4dp"
             android:background="@drawable/input_style"
             android:enabled="false"
-            android:maxLength="2"
             android:fontFamily="@font/fredoka_one"
             android:importantForAutofill="no"
             android:inputType="number"
+            android:maxLength="2"
             android:maxLines="1"
             android:padding="12dp"
             android:textColor="@color/textColorPrimary"
@@ -349,5 +349,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
