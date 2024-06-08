@@ -25,6 +25,19 @@
         <item name="android:fontFamily">@font/fredoka_one</item>
     </style>
 
+    <style name="CustomTabLayout" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabTextAppearance">@style/CustomTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/primary</item>
+        <item name="tabIndicatorColor">@color/textColorSecondary</item>
+    </style>
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="textAllCaps">false</item>
+        <item name="fontFamily">@font/fredoka_one</item>
+    </style>
+
     <style name="Switch.Default" parent="Widget.Material3.CompoundButton.MaterialSwitch">
         <item name="thumbIcon">@drawable/ic_check</item>
         <item name="checkedIconSize">16dp</item>
