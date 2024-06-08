@@ -2,6 +2,7 @@ package dev.luizleal.tabuadaglecio.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -90,7 +91,9 @@ class RegisterActivity : AppCompatActivity() {
             if (username.isNotEmpty() && userClass.isNotEmpty()) {
                 securityPreferences.storeString("username", username.toString().trim())
                 securityPreferences.storeString("userClass", userClass.toString().trim())
-                securityPreferences.storeString("userId", StringUtils.generateUserId())
+
+                val userId = if (isEditingProfile) securityPreferences.getString("userId") else StringUtils.generateUserId()
+                securityPreferences.storeString("userId", userId)
 
                 //Log.d("RegisterActivity", "Navigating to MainActivity")
 
