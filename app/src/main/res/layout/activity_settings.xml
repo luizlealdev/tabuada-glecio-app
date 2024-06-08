@@ -121,16 +121,34 @@
             app:layout_constraintTop_toBottomOf="@id/text_delete_progress" />
 
         <TextView
+            android:id="@+id/text_source_code"
             android:layout_width="wrap_content"
-            android:text="@string/feito_com_por_luiz_leal_e_lucas_davi_n_inform_tica_2022_2024"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:drawablePadding="4dp"
+            android:focusable="true"
+            android:fontFamily="@font/fredoka_one"
+            android:paddingVertical="8dp"
+            android:text="Ver código fonte"
             android:textColor="@color/textColorSecondary"
+            android:textSize="20sp"
+            app:drawableStartCompat="@drawable/ic_github"
+            app:drawableTint="@color/textColorSecondary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_visit_site" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/fredoka_one"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/feito_com_por_luiz_leal_e_lucas_davi_n_inform_tica_2022_2024"
+            android:textColor="@color/textColorSecondary"
             android:textSize="18sp"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

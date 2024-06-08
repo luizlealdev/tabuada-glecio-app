@@ -38,7 +38,8 @@ class SettingsActivity : AppCompatActivity() {
             textEditProfile.setOnClickListener(goToEditProfile())
             textDeleteProgress.setOnClickListener(deleteProgress())
             switchAnimations.setOnCheckedChangeListener(toggleAnimations())
-            textVisitSite.setOnClickListener(goToWebsite())
+            textVisitSite.setOnClickListener(openBrowserByUrl("https://tabuada-de-glecio.vercel.app"))
+            textSourceCode.setOnClickListener(openBrowserByUrl("https://github.com/luizlealdev/tabuada-glecio-app"))
         }
 
         Theme(applicationContext).applyTheme()
@@ -152,9 +153,8 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToWebsite(): View.OnClickListener {
+    private fun openBrowserByUrl(url: String): View.OnClickListener {
         return View.OnClickListener {
-            val url = "https://tabuada-de-glecio.vercel.app/"
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             startActivity(browserIntent)
         }
