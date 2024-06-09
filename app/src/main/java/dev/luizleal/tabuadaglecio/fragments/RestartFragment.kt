@@ -12,6 +12,7 @@ import dev.luizleal.tabuadaglecio.R
 import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentRestartBinding
 import dev.luizleal.tabuadaglecio.ui.LeaderboardActivity
+import dev.luizleal.tabuadaglecio.ui.SettingsActivity
 import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
 
 class RestartFragment : Fragment(R.layout.fragment_restart) {
@@ -48,6 +49,10 @@ class RestartFragment : Fragment(R.layout.fragment_restart) {
                 startActivity(intent)
             }
 
+            imageSettingsButton.setOnClickListener {
+                val intent = Intent(requireContext(), SettingsActivity::class.java)
+                startActivity(intent)
+            }
             textMaxScore.text =
                 "Sua maior pontuacão: ${SecurityPreferences(requireContext()).getString("maxScore")}"
         }
