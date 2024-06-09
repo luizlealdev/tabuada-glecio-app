@@ -32,6 +32,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
 
     private lateinit var resultInput: EditText
     private lateinit var currentMultiplication: Multiplication
+    private var lastMultiplication = Multiplication(1, 1, 1)
     private var correctCount = 0
     private var wrongCount = 0
 
@@ -205,6 +206,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
     private fun setMultiplication() {
         val textMultiplication = binding.textMultiplication
 
+        lastMultiplication = currentMultiplication
         textMultiplication.setText(
             "${currentMultiplication.firstNumber} x ${currentMultiplication.secondNumber}"
         )
@@ -217,7 +219,11 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         val secondNumber = Random.nextInt(1, 10)
         val result = firstNumber * secondNumber
 
-        currentMultiplication = Multiplication(firstNumber, secondNumber, result)
+        if (lastMultiplication.firstNumber != firstNumber && lastMultiplication.secondNumber != secondNumber) {
+            currentMultiplication = Multiplication(firstNumber, secondNumber, result)
+        } else {
+            generateNewMultiplication()
+        }
     }
 
     private fun saveLeaderboardItem(reference: DatabaseReference, data: LeaderboardUser) {
