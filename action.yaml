@@ -1,20 +1,17 @@
 name: 'Build Android APK'
 description: 'Builds an Android APK'
-inputs:
-  build_type:
-    description: 'The type of build (e.g., debug, release)'
-    required: true
-    default: 'release'
 runs:
   using: 'composite'
+  shell: 'bash'
   steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up JDK
-      uses: actions/setup-java@v1
+    - name: Setup JDK 11
+      uses: actions/setup-java@v2
       with:
+        distribution: 'adopt'
         java-version: '11'
 
     - name: Build APK
-      run: ./gradlew assemble${{ inputs.build_type }}
+      run: ./gradlew assembleDebug
