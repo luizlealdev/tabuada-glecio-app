@@ -4,7 +4,7 @@ Um simples aplicativo de tabuada, desenvolvido com o intuito de ajudar o profess
 
 ## Preview
 
-![Preview Image](https://github.com/luizlealdev/tabuada-glecio-app/preview/image_app_preview.png)
+![Preview Image](https://raw.githubusercontent.com/luizlealdev/tabuada-glecio-app/master/preview/image_app_preview.png)
 
 ## Como usar?
 Clique no botão [![Use this template](https://img.shields.io/badge/-Use%20this%20template-brightgreen)](https://github.com/luizlealdev/tabuada-glecio-app/generate)
