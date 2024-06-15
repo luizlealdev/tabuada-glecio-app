@@ -8,7 +8,7 @@ Um simples aplicativo de tabuada, desenvolvido com o intuito de ajudar o profess
 
 ## Como usar  📂
 - Clique no botão [![Use this template](https://img.shields.io/badge/-Use%20this%20template-brightgreen)](https://github.com/luizlealdev/tabuada-glecio-app/generate)
-- Importe um projeto para o Android Studio ou IDE de sua preferência
+- Importe o projeto para o Android Studio ou IDE de sua preferência
 - Quando importado, edite:
   - App ID
   - AndroidManifest
