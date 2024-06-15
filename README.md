@@ -17,7 +17,7 @@ Quando criado, edite:
 Para usar as pontuações adicione o arquivo `google-services.json` diretório `/app`
 
 ## Download
-[![Download APK](http://yt3dl.net/images/apk-download-badge.png)](https://github.com/luizlealdev/tabuada-glecio-app/releases/latest)
+[![Download APK](https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png)](https://github.com/luizlealdev/tabuada-glecio-app/releases/latest)
 
 ## Licença
 [MIT](https://github.com/luizlealdev/tabuada-glecio-app/LICENCE)
