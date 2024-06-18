@@ -13,7 +13,7 @@ Um simples aplicativo de tabuada, desenvolvido com o intuito de ajudar o profess
   - App ID
   - AndroidManifest
   - Package dos arquivos
-- Para usar as pontuações adicione o arquivo `google-services.json` diretório `/app`
+- Para usar as pontuações adicione o arquivo `google-services.json` no diretório `/app`
 
 ## Download 📥
 [![Download APK](https://raw.githubusercontent.com/luizlealdev/tabuada-glecio-app/master/images/get_on_github_badge.png)](https://github.com/luizlealdev/tabuada-glecio-app/releases/latest)
