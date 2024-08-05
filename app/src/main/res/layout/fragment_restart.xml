@@ -149,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/fredoka_one"
-            android:text="v1.0.0"
+            android:text="@string/app_version"
             android:textColor="@color/textColorSecondary"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"

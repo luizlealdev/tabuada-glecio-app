@@ -21,9 +21,9 @@ import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentGameBinding
 import dev.luizleal.tabuadaglecio.model.LeaderboardUser
 import dev.luizleal.tabuadaglecio.model.Multiplication
-import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
-import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimationToAll
-import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setScaleAnimation
+import dev.luizleal.tabuadaglecio.util.AnimationController.Companion.setButtonPressedAnimation
+import dev.luizleal.tabuadaglecio.util.AnimationController.Companion.setButtonPressedAnimationToAll
+import dev.luizleal.tabuadaglecio.util.AnimationController.Companion.setScaleAnimation
 import kotlin.random.Random
 
 class GameFragment : Fragment(R.layout.fragment_game) {
@@ -74,8 +74,8 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         )
 
         binding.apply {
-            textNumpadEnter.setButtonPressedAnimation()
-            textNumpadBackspace.setButtonPressedAnimation()
+            textNumpadEnter.setButtonPressedAnimation(requireContext())
+            textNumpadBackspace.setButtonPressedAnimation(requireContext())
         }
 
         securityPreferences = SecurityPreferences(requireContext())
@@ -87,7 +87,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
         databaseReference = firebaseDatabase?.getReference("leaderboard")
         databaseGlobalLeaderboardReference = firebaseDatabase?.getReference("leaderboard_global")
 
-        setButtonPressedAnimationToAll(numpadButtons)
+        setButtonPressedAnimationToAll(requireContext(), numpadButtons)
         setNumpadButtonsAction(numpadButtons)
 
         startTimer()
@@ -211,7 +211,7 @@ class GameFragment : Fragment(R.layout.fragment_game) {
             "${currentMultiplication.firstNumber} x ${currentMultiplication.secondNumber}"
         )
 
-        if (animationState) textMultiplication.setScaleAnimation()
+        if (animationState) textMultiplication.setScaleAnimation(requireContext())
     }
 
     private fun generateNewMultiplication() {

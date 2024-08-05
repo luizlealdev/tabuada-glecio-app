@@ -130,7 +130,7 @@
             android:focusable="true"
             android:fontFamily="@font/fredoka_one"
             android:paddingVertical="8dp"
-            android:text="Ver código fonte"
+            android:text="@string/ver_c_digo_fonte"
             android:textColor="@color/textColorSecondary"
             android:textSize="20sp"
             app:drawableStartCompat="@drawable/ic_github"

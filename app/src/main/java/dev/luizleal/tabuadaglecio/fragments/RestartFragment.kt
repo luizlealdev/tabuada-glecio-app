@@ -13,7 +13,7 @@ import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentRestartBinding
 import dev.luizleal.tabuadaglecio.ui.LeaderboardActivity
 import dev.luizleal.tabuadaglecio.ui.SettingsActivity
-import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
+import dev.luizleal.tabuadaglecio.util.AnimationController.Companion.setButtonPressedAnimation
 
 class RestartFragment : Fragment(R.layout.fragment_restart) {
     private var restartBinding: FragmentRestartBinding? = null
@@ -35,11 +35,13 @@ class RestartFragment : Fragment(R.layout.fragment_restart) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        securityPreferences = SecurityPreferences(requireContext())
+
         setScore()
 
         binding.apply {
-            buttonRestart.setButtonPressedAnimation()
-            buttonViewLeaderboard.setButtonPressedAnimation()
+            buttonRestart.setButtonPressedAnimation(requireContext())
+            buttonViewLeaderboard.setButtonPressedAnimation(requireContext())
 
             buttonRestart.setOnClickListener {
                 it.findNavController().popBackStack(R.id.gameFragment, false)
@@ -66,5 +68,9 @@ class RestartFragment : Fragment(R.layout.fragment_restart) {
     private fun setScore() {
         binding.textCountRight.setText(args.correctAnswers)
         binding.textCountWrong.setText(args.wrongAnswers)
+    }
+
+    private fun setupAnimationsInButton() {
+
     }
 }

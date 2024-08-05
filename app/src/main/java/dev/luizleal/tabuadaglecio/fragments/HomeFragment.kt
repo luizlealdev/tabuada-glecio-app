@@ -12,7 +12,7 @@ import dev.luizleal.tabuadaglecio.content.SecurityPreferences
 import dev.luizleal.tabuadaglecio.databinding.FragmentHomeBinding
 import dev.luizleal.tabuadaglecio.ui.LeaderboardActivity
 import dev.luizleal.tabuadaglecio.ui.SettingsActivity
-import dev.luizleal.tabuadaglecio.util.ViewUtils.Companion.setButtonPressedAnimation
+import dev.luizleal.tabuadaglecio.util.AnimationController.Companion.setButtonPressedAnimation
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private lateinit var binding: FragmentHomeBinding
@@ -33,8 +33,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         securityPreferences = SecurityPreferences(requireContext())
 
-        binding.buttonStart.setButtonPressedAnimation()
-        binding.buttonViewLeaderboard.setButtonPressedAnimation()
+        binding.buttonStart.setButtonPressedAnimation(requireContext())
+        binding.buttonViewLeaderboard.setButtonPressedAnimation(requireContext())
 
         if (securityPreferences.getString("maxScore").isEmpty()) {
             securityPreferences.storeString("maxScore", "0")
