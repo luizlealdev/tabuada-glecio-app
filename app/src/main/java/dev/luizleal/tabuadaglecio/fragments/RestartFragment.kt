@@ -69,8 +69,4 @@ class RestartFragment : Fragment(R.layout.fragment_restart) {
         binding.textCountRight.setText(args.correctAnswers)
         binding.textCountWrong.setText(args.wrongAnswers)
     }
-
-    private fun setupAnimationsInButton() {
-
-    }
 }
